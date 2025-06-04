@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Search, Plus, UserPlus } from 'lucide-react';
+import { Search, UserPlus } from 'lucide-react';
 
 interface Friend {
   id: string;
@@ -64,15 +64,15 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
   );
 
   return (
-    <div className="fixed left-16 top-16 h-[calc(100vh-4rem)] w-80 bg-slate-800 border-r border-slate-700 flex flex-col">
+    <div className="fixed left-16 top-16 h-[calc(100vh-4rem)] w-80 bg-slate-800 border-r border-slate-700 flex flex-col shadow-lg">
       {/* Header */}
-      <div className="p-4 border-b border-slate-700">
+      <div className="p-4 border-b border-slate-700 bg-slate-750">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-white">Messages</h2>
           <Button
             variant="ghost"
             size="icon"
-            className="text-slate-300 hover:bg-slate-700 hover:text-white"
+            className="text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
             title="Add Friend"
           >
             <UserPlus className="h-4 w-4" />
@@ -86,7 +86,7 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search conversations..."
-            className="pl-10 bg-slate-700 border-slate-600 text-white placeholder-slate-400"
+            className="pl-10 bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
       </div>
@@ -96,9 +96,9 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
         {filteredFriends.map((friend) => (
           <div
             key={friend.id}
-            className={`p-4 border-b border-slate-700 cursor-pointer transition-colors ${
+            className={`p-4 border-b border-slate-700 cursor-pointer transition-all duration-200 ${
               selectedFriend?.id === friend.id
-                ? 'bg-slate-700'
+                ? 'bg-slate-700 border-l-4 border-l-blue-500'
                 : 'hover:bg-slate-700/50'
             }`}
             onClick={() => onSelectFriend(friend)}
@@ -106,7 +106,7 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <Avatar className="h-12 w-12">
-                  <AvatarFallback className="bg-blue-600 text-white">
+                  <AvatarFallback className="bg-blue-600 text-white font-medium">
                     {friend.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
@@ -116,7 +116,7 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
               </div>
               
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-1">
                   <h3 className="text-white font-medium truncate">{friend.name}</h3>
                   {friend.lastMessageTime && (
                     <span className="text-xs text-slate-400">
@@ -125,7 +125,7 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
                   )}
                 </div>
                 {friend.lastMessage && (
-                  <p className="text-sm text-slate-400 truncate mt-1">
+                  <p className="text-sm text-slate-400 truncate">
                     {friend.lastMessage}
                   </p>
                 )}

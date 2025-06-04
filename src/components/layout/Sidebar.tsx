@@ -14,20 +14,24 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange, user, onLogout }) => {
   return (
     <div className="fixed left-0 top-0 h-full w-16 bg-slate-800 border-r border-slate-700 flex flex-col">
-      {/* Header */}
-      <div className="p-3 border-b border-slate-700">
-        <h1 className="text-lg font-bold text-white text-center">CP</h1>
+      {/* Header with App Name */}
+      <div className="p-2 border-b border-slate-700 flex flex-col items-center">
+        <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-1">
+          <span className="text-white font-bold text-sm">CP</span>
+        </div>
+        <div className="text-[10px] text-slate-300 font-medium text-center leading-tight">
+          <div>Chat</div>
+          <div>Pay</div>
+        </div>
       </div>
 
       {/* User Profile */}
-      <div className="p-2 border-b border-slate-700">
-        <div className="flex justify-center">
-          <Avatar className="h-8 w-8">
-            <AvatarFallback className="bg-blue-600 text-white text-xs">
-              {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
-            </AvatarFallback>
-          </Avatar>
-        </div>
+      <div className="p-2 border-b border-slate-700 flex justify-center">
+        <Avatar className="h-8 w-8">
+          <AvatarFallback className="bg-blue-600 text-white text-xs">
+            {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
+          </AvatarFallback>
+        </Avatar>
       </div>
 
       {/* Navigation */}
