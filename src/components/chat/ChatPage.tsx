@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Phone, Video, Send, Mic, MicOff } from 'lucide-react';
+import { Phone, Video, Send, Mic, MicOff, MessageCircle } from 'lucide-react';
 import { FriendsSidebar } from './FriendsSidebar';
 
 interface ChatPageProps {

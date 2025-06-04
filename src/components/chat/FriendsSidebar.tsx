@@ -64,7 +64,7 @@ export const FriendsSidebar: React.FC<FriendsSidebarProps> = ({ selectedFriend, 
   );
 
   return (
-    <div className="fixed left-16 top-0 h-full w-80 bg-slate-800 border-r border-slate-700 flex flex-col">
+    <div className="fixed left-16 top-16 h-[calc(100vh-4rem)] w-80 bg-slate-800 border-r border-slate-700 flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-slate-700">
         <div className="flex items-center justify-between mb-4">
