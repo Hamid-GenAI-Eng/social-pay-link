@@ -37,7 +37,7 @@ const Index = () => {
         user={user}
         onLogout={handleLogout}
       />
-      <main className="flex-1 ml-64">
+      <main className={`flex-1 ${currentPage === 'chat' ? 'ml-16' : 'ml-16'}`}>
         {currentPage === 'chat' ? (
           <ChatPage user={user} />
         ) : (
